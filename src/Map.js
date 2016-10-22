@@ -39,6 +39,12 @@ class Map {
 
   update () {}
 
+  isRoad (x, y) {
+    const tile = this.map.getTile(x, y, this.layer)
+    if (!tile) return false
+    return tile.layer.name === 'Roads'
+  }
+
   getRandomTile () {
     return this.tiles[this.getRandomIntInclusive(0, this.tiles.length - 1)]
   }
