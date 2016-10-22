@@ -3,6 +3,8 @@
 const drakeTexturePath = require('../assets/drakebling.png')
 const drakeTextureSpec = require('../assets/drakebling.json')
 
+const Map = require('./Map')
+
 const constants = require('./constants')
 const { speed, frameRate, width, height } = constants.drake
 const { tileSize, borderAllowance } = constants.map
@@ -13,8 +15,7 @@ class Drake {
     game.load.atlasJSONHash('drake', drakeTexturePath, null, drakeTextureSpec)
   }
 
-  create (map) {
-    this.map = map
+  create () {
     this.sprite = game.add.sprite(width, height, 'drake')
     this.sprite.x = game.width / 2
     this.sprite.y = game.height / 2
@@ -53,7 +54,7 @@ class Drake {
 
   inBounds (x, y) {
     const coords = this.getTileCoords(x || 0, y || 0)
-    return this.map.isRoad.apply(this.map, coords)
+    return Map.isRoad.apply(Map, coords)
   }
 
   update () {

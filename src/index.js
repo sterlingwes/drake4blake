@@ -1,8 +1,8 @@
 const Drake = require('./Drake')
+const Person = require('./Person')
 const Map = require('./Map')
 
 let drake
-let map
 
 var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
   preload: preload,
@@ -11,16 +11,19 @@ var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
 })
 
 function preload () {
-  map = new Map()
+  Map.init()
   drake = new Drake()
+  person = new Person()
 }
 
 function create () {
-  map.create()
-  drake.create(map)
+  Map.create()
+  drake.create()
+  person.create()
 }
 
 function update () {
-  map.update()
+  Map.update()
   drake.update()
+  person.update()
 }
