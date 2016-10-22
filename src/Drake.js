@@ -3,12 +3,9 @@
 const drakeTexturePath = require('../assets/drakebling.png')
 const drakeTextureSpec = require('../assets/drakebling.json')
 
-const speed = 6
-const frameRate = 5
-const units = 32
-const width = 125
-const height = 150
-const borderAllowance = 20
+const constants = require('./constants')
+const { speed, frameRate, width, height } = constants.drake
+const { tileSize, borderAllowance } = constants.map
 
 class Drake {
   constructor () {
@@ -49,8 +46,8 @@ class Drake {
 
   getTileCoords (offsetX, offsetY) {
     return [
-      Math.floor((this.sprite.x + offsetX) / units),
-      Math.floor((this.sprite.y + offsetY) / units)
+      Math.floor((this.sprite.x + offsetX) / tileSize),
+      Math.floor((this.sprite.y + offsetY) / tileSize)
     ]
   }
 
