@@ -13,6 +13,7 @@ class Map {
 
     game.load.tilemap('roads', null, tileSpec, Phaser.Tilemap.TILED_JSON)
     game.load.image('tiles', roadTexturePath)
+    return this
   }
 
   create () {

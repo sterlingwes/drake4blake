@@ -2,6 +2,8 @@ const Drake = require('./Drake')
 const Person = require('./Person')
 const Map = require('./Map')
 
+const MAX_NB_PERSONS = 10
+
 let drake
 
 var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
@@ -11,19 +13,22 @@ var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
 })
 
 function preload () {
-  Map.init()
-  drake = new Drake()
-  person = new Person()
+  this.map = Map.init()
+  this.drake = new Drake()
+  this.persons = []
+  for (let i = 0; i < MAX_NB_PERSONS; i++) {
+    this.persons.push(new Person())
+  }
 }
 
 function create () {
-  Map.create()
-  drake.create()
-  person.create()
+  this.map.create()
+  this.drake.create()
+  this.persons.forEach(person => { person.create() })
 }
 
 function update () {
-  Map.update()
-  drake.update()
-  person.update()
+  this.map.update()
+  this.drake.update()
+  this.persons.forEach(person => { person.update() })
 }
