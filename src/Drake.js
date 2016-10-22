@@ -1,13 +1,19 @@
 /* globals game */
 
+const drakeTexturePath = require('../assets/drakebling.png')
+const drakeTextureSpec = require('../assets/drakebling.json')
+
 const speed = 4
 const frameRate = 5
 
 class Drake {
   constructor () {
     this.animation = null
+    game.load.atlasJSONHash('drake', drakeTexturePath, null, drakeTextureSpec)
+  }
 
-    this.sprite = game.add.sprite(125, 150, 'bot')
+  create () {
+    this.sprite = game.add.sprite(125, 150, 'drake')
     this.sprite.x = 100
     this.sprite.y = 150
     this.sprite.scale.setTo(0.5)
