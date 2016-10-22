@@ -13,7 +13,7 @@ class Map {
 
   create () {
     this.map = game.add.tilemap('roads')
-    this.map.addTilesetImage('Level', 'tiles')
+    this.map.addTilesetImage('Road', 'tiles')
 
     this.backgroundLayer = this.map.createLayer('Background')
     this.layer = this.map.createLayer('Roads')
