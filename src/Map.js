@@ -19,7 +19,13 @@ class Map {
     this.layer = this.map.createLayer('Roads')
   }
 
-  update() {}
+  update () {}
+
+  isRoad (x, y) {
+    const tile = this.map.getTile(x, y, this.layer)
+    if (!tile) return false
+    return tile.layer.name === 'Roads'
+  }
 }
 
 module.exports = Map

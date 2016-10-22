@@ -17,7 +17,7 @@ function preload () {
 
 function create () {
   map.create()
-  drake.create()
+  drake.create(map)
 }
 
 function update () {
