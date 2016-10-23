@@ -91,6 +91,16 @@ class Map {
     return tile.layer.name === 'Roads'
   }
 
+  getTile (x, y) {
+    return this.map.getTile(x, y, this.layer)
+  }
+
+  getTileFromPixels (x, y) {
+    const tileX = Math.floor(x / tileSize)
+    const tileY = Math.floor(y / tileSize)
+    return this.map.getTile(tileX, tileY, this.layer)
+  }
+
   getRandomTile () {
     return this.tiles[Helper.getRandomIntInclusive(0, this.tiles.length - 1)]
   }

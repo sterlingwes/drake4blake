@@ -1,3 +1,13 @@
+### Dev Mode
+
 ```
-npm i && npm start
+npm start
+```
+
+### Debug Mode
+
+Features a numbered grid
+
+```
+npm run debug
 ```

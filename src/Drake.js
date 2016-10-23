@@ -70,6 +70,10 @@ class Drake {
       if (this.animation) this.animation.paused = true
     }
   }
+
+  getTile () {
+    return Map.getTileFromPixels(this.sprite.x, this.sprite.y)
+  }
 }
 
 module.exports = Drake

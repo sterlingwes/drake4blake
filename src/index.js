@@ -1,13 +1,21 @@
+/* globals ENV */
+
 require('./style.css')
+require('./window.js')
+
+if (ENV === 'debug') {
+  require('./grid')
+}
 
 const Drake = require('./Drake')
 const Person = require('./Person')
 const Map = require('./Map')
-
-const MAX_NB_PERSONS = 10
+const constants = require('./constants')
+const { max } = constants.person
 
 let drake
 let persons
+let personCount = 0
 
 var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
   preload: preload,
@@ -29,13 +37,20 @@ function create () {
 
 function update () {
   Map.update()
-  persons.forEach(person => { person.update() })
   drake.update()
+  const drakeTile = drake.getTile()
+  persons.forEach(person => {
+    person.update()
+    if (person.isOnTile(drakeTile)) {
+      person.remove()
+      personCount++
+    }
+  })
 }
 
 function initPersons() {
   const tiles = Map.tiles
-  for (let i = 0; i < MAX_NB_PERSONS; i++) {
+  for (let i = 0; i < max; i++) {
     const personTemp = new Person()
     personTemp.create()
     while (persons.findIndex(person => person.comparePosition(personTemp)) > -1) {

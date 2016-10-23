@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 const env = process.env.NODE_ENV
-const dev = env === 'development'
+const dev = ['development', 'debug'].indexOf(env) !== -1
 
 const paths = {
   src: path.join(__dirname, 'src'),
@@ -58,7 +58,9 @@ const webpackConfig = {
     new HtmlWebpackPlugin({
       template: path.join(paths.src, 'index.html')
     }),
-    new webpack.DefinePlugin({}),
+    new webpack.DefinePlugin({
+      'ENV': '"' + env + '"'
+    }),
     new CopyWebpackPlugin([
       {
         from: path.join(paths.src, '/vendor'),
@@ -72,13 +74,8 @@ const webpackConfig = {
   }
 }
 
-const buildEnv = env === 'development' ? env : 'production'
-
 if (!dev) {
   webpackConfig.plugins = webpackConfig.plugins.concat([
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"' + buildEnv + '"'
-    }),
     new CleanPlugin(paths.dist),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

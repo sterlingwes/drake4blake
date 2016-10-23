@@ -6,7 +6,13 @@ module.exports = {
     height: 120,
     scale: 1
   },
+  person: {
+    speed: 32,
+    max: 8
+  },
   map: {
+    width: 30,
+    height: 25,
     tileSize: 32,
     borderAllowance: 20,
     fontPadding: 6,
