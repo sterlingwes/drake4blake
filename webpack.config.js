@@ -78,13 +78,7 @@ if (!dev) {
   webpackConfig.plugins = webpackConfig.plugins.concat([
     new CleanPlugin(paths.dist),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: {
-        warnings: false
-      }
-    })
+    new webpack.optimize.OccurenceOrderPlugin()
   ])
 }
 
