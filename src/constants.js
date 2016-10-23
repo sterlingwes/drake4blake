@@ -38,8 +38,6 @@ module.exports = {
   tweets: [
     'Help @Drake support Blake Boultbee Youth Outreach Services',
     '@Drake - how many people can you get to Blake Boultbee Youth Outreach',
-    '@Drake for Blake: a fun game supporting Toronto’s Blake Boultbee Youth Outreach Services',
-    'Learn more about \#Toronto’s Blake Boultbee Youth Outreach Service? Start with this fun game: @Drake for Blake'
-  ],
-  shortUrl: 'http://bit.ly/2eA57nU'
+    '@Drake for Blake: a fun game supporting Toronto’s Blake Boultbee Youth Outreach Services'
+  ]
 }

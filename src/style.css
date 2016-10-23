@@ -115,17 +115,37 @@ a {
   left: 30vw;
 }
 
-.donateBtn {
+.buttons {
+  margin-top: 30px;
+}
+
+.button {
   display: inline-block;
   vertical-align: top;
-  font-size: 0.9em;
-  padding: 6px;
-  border-radius: 3px;
-  background-color: #a03894;
+  font-size: 0.8em;
+  padding: 7px 8px;
+  border-radius: 4px;
   text-decoration: none;
+}
+
+.button--small {
+  padding: 3px 7px 2px 7px;
+}
+
+.donateBtn {
+  background-color: #a03894;
   color: #fff;
 }
 
 .donateBtn:hover {
   background-color: #e838d4
+}
+
+.basicBtn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.basicBtn:hover {
+  background-color: #fff
 }
