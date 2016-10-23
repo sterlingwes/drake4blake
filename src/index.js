@@ -35,7 +35,7 @@ function create () {
   Map.create()
   initPersons()
   drake.create()
-  SoundManager.create()
+  if (ENV !== 'debug') SoundManager.create()
 }
 
 function update () {

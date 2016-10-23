@@ -5,6 +5,7 @@ const left = document.getElementById('gridLeft')
 const { width, height } = require('./constants').map
 
 container.className += 'debug'
+top.className += 'debug'
 
 for (let i=0; i<=width; i++) {
   const div = document.createElement('div')

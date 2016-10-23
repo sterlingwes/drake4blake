@@ -56,14 +56,18 @@ body {
   display: none
 }
 
-#container.debug #gridTop div, #container.debug #gridLeft div {
+#gridTop.debug {
+  display: block
+}
+
+#gridTop.debug div, #container.debug #gridLeft div {
   width: 32px;
   height: 32px;
   text-align: center;
   color: #fff
 }
 
-#container.debug #gridLeft, #container.debug #gridTop div {
+#container.debug #gridLeft, #gridTop.debug div {
   display: inline-block;
 }
 
