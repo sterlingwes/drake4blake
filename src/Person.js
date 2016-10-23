@@ -1,7 +1,9 @@
 /* globals game */
 const Map = require('./Map')
-const _ = require('lodash')
+const shuffle = require('lodash/shuffle')
+const without = require('lodash/without')
 const constants = require('./constants')
+const { debug } = require('./Helper')
 const { speed } = constants.person
 
 const directions = ['up', 'down', 'left', 'right']
@@ -30,9 +32,17 @@ class Person {
     this.graphics.y += y || 0
   }
 
+  /*
+   * - getDirection (shuffled with current direction prioritized and opposite of that last)
+   * - checkDirection to see if movable in that direction (nextTile exists & is road)
+   * - set direction
+   * - move in that direction with predefined speed and reset current tile
+   */
   update () {
     if (!this.active) return
-
+    
+    debug('-- update')
+    debug(`current: ${this.tile.x},${this.tile.y} (${this.graphics.x},${this.graphics.y})`)
     this.getDirection()
     if (this.direction) {
       this.move()
@@ -40,10 +50,10 @@ class Person {
   }
 
   getDirection () {
-    let options = _.shuffle(directions)
+    let options = shuffle(directions)
     if (this.direction) {
       const oppositeDirection = opposite[this.direction]
-      options = _.without(
+      options = without(
         options,
         this.direction, oppositeDirection
       )
@@ -56,12 +66,14 @@ class Person {
         direction = testDirection
       }
     }
+    debug(`direction: ${direction}`)
     this.direction = direction
   }
 
   checkDirection (direction) {
     const next = this.getNextTile(direction)
     if (next && next.layer.name == 'Roads') {
+      debug(`next: ${next.x},${next.y}`)
       return true
     }
   }
@@ -103,6 +115,7 @@ class Person {
         this.graphics.x += speed;
     }
     this.tile = Map.getTileFromPixels(this.graphics.x, this.graphics.y)
+    debug(`moved: ${this.tile.x},${this.tile.y} (${this.graphics.x},${this.graphics.y})`)
   }
 
   remove () {
