@@ -23,14 +23,14 @@ function preload () {
 
 function create () {
   Map.create()
-  drake.create()
   initPersons()
+  drake.create()
 }
 
 function update () {
   Map.update()
-  drake.update()
   persons.forEach(person => { person.update() })
+  drake.update()
 }
 
 function initPersons() {
