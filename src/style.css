@@ -20,6 +20,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
+  overflow-y: scroll
 }
 
 #sidebar div {
@@ -27,6 +28,10 @@ body {
   color: #c3c3c3;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5em;
+}
+
+#sidebar div p {
+  padding-right: 20px;
 }
 
 .guide {
