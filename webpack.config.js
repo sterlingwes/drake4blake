@@ -36,6 +36,10 @@ const webpackConfig = {
         }
       },
       {
+        test: /\.mp3$/,
+        loader: 'url'
+      },
+      {
         test: /\.css$/,
         exclude: /node_modules/,
         loader: 'style!css-loader'
