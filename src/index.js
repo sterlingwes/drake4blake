@@ -29,6 +29,7 @@ function preload () {
   drake = new Drake()
   persons = []
   SoundManager.init()
+  document.getElementById('winModal').style.display = 'none'
 }
 
 function create () {
@@ -43,9 +44,12 @@ function update () {
   SoundManager.update()
   drake.update()
   const drakeTile = drake.getTile()
+  if (personCount === max && Map.isInHouse(drake.sprite.x, drake.sprite.y)) {
+    showWinMessage()
+  }
   persons.forEach(person => {
     person.update()
-    if (person.isOnTile(drakeTile)) {
+    if (person.active && person.isOnTile(drakeTile)) {
       person.remove()
       personCount++
     }
@@ -62,4 +66,8 @@ function initPersons() {
     }
     persons.push(personTemp)
   }
+}
+
+function showWinMessage() {
+  document.getElementById('winModal').style.display = 'block'
 }
