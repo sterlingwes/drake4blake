@@ -1,6 +1,7 @@
 /* globals game */
 const tileSpec = require('../assets/level.json')
 const roadTexturePath = require('../assets/road.png')
+const Helper = require('./Helper')
 
 class Map {
   constructor () {
@@ -13,7 +14,6 @@ class Map {
 
     game.load.tilemap('roads', null, tileSpec, Phaser.Tilemap.TILED_JSON)
     game.load.image('tiles', roadTexturePath)
-    return this
   }
 
   create () {
@@ -22,7 +22,7 @@ class Map {
 
     this.backgroundLayer = this.map.createLayer('Background')
     this.layer = this.map.createLayer('Roads')
-
+    
     this.tiles = []
     this.generateTilesArray()
   }
@@ -47,13 +47,7 @@ class Map {
   }
 
   getRandomTile () {
-    return this.tiles[this.getRandomIntInclusive(0, this.tiles.length - 1)]
-  }
-
-  getRandomIntInclusive (min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min
+    return this.tiles[Helper.getRandomIntInclusive(0, this.tiles.length - 1)]
   }
 }
 
