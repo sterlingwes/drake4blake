@@ -1,6 +1,7 @@
 /* globals game */
 const tileSpec = require('../assets/level.json')
 const roadTexturePath = require('../assets/road.png')
+const Helper = require('./Helper')
 const degrassiDrake = require('../assets/degrassidrake.png')
 
 const constants = require('./constants')
@@ -33,7 +34,6 @@ class Map {
 
     this.backgroundLayer = this.map.createLayer('Background')
     this.layer = this.map.createLayer('Roads')
-
     this.renderStreetNames()
 
     this.tiles = []
@@ -86,13 +86,7 @@ class Map {
   }
 
   getRandomTile () {
-    return this.tiles[this.getRandomIntInclusive(0, this.tiles.length - 1)]
-  }
-
-  getRandomIntInclusive (min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min
+    return this.tiles[Helper.getRandomIntInclusive(0, this.tiles.length - 1)]
   }
 }
 
