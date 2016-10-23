@@ -1,3 +1,5 @@
+require('./style.css')
+
 const Drake = require('./Drake')
 const Person = require('./Person')
 const Map = require('./Map')

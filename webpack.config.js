@@ -36,6 +36,19 @@ const webpackConfig = {
         }
       },
       {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: 'style!css-loader'
+      },
+      {
+        test: /\.otf(\?[a-z]+)?$/,
+        include: paths.src + '/fonts',
+        loader: 'url',
+        query: {
+          limit: 10000
+        }
+      },
+      {
         test: /\.json$/,
         loader: 'json'
       }
