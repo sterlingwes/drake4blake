@@ -10,6 +10,7 @@ if (ENV === 'debug') {
 const Drake = require('./Drake')
 const Person = require('./Person')
 const Map = require('./Map')
+const SoundManager = require('./SoundManager')
 const constants = require('./constants')
 const { max } = constants.person
 
@@ -27,16 +28,19 @@ function preload () {
   Map.init()
   drake = new Drake()
   persons = []
+  SoundManager.init()
 }
 
 function create () {
   Map.create()
   initPersons()
   drake.create()
+  SoundManager.create()
 }
 
 function update () {
   Map.update()
+  SoundManager.update()
   drake.update()
   const drakeTile = drake.getTile()
   persons.forEach(person => {
