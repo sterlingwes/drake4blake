@@ -44,6 +44,9 @@ class Map {
     this.house = game.add.sprite.apply(game.add, houseCoords)
     this.house.scale.setTo(0.6)
     this.house.y += 5
+
+    const houseObject = this.map.objects['Drake House'][0]
+    this.houseZone = new Phaser.Rectangle(houseObject.x, houseObject.y, houseObject.width, houseObject.height)
   }
 
   renderStreetNames () {
@@ -89,6 +92,10 @@ class Map {
     const tile = this.map.getTile(x, y, this.layer)
     if (!tile) return false
     return tile.layer.name === 'Roads'
+  }
+
+  isInHouse(x, y) {
+    return this.houseZone.contains(x, y)
   }
 
   getTile (x, y) {

@@ -2,6 +2,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #2E2E2E;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a {
+  color: #e838d4;
 }
 
 #app {
@@ -26,7 +31,6 @@ body {
 #sidebar div {
   text-align: left;
   color: #c3c3c3;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5em;
 }
 
@@ -78,4 +82,49 @@ body {
 
 #container.debug #gridLeft {
   vertical-align: top
+}
+
+#winModal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#winModal .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#winModal .modal {
+  width: 500px;
+  height: 90px;
+  background-color: #222;
+  padding: 10px;
+  border: 1px solid #a03894;
+  border-radius: 2px;
+  color: #eee;
+  position: absolute;
+  top: 20vh;
+  left: 30vw;
+}
+
+.donateBtn {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0.9em;
+  padding: 6px;
+  border-radius: 3px;
+  background-color: #a03894;
+  text-decoration: none;
+  color: #fff;
+}
+
+.donateBtn:hover {
+  background-color: #e838d4
 }

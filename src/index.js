@@ -13,6 +13,7 @@ const Map = require('./Map')
 const SoundManager = require('./SoundManager')
 const constants = require('./constants')
 const { max } = constants.person
+const winModal = document.getElementById('winModal')
 
 let drake
 let persons
@@ -43,9 +44,12 @@ function update () {
   SoundManager.update()
   drake.update()
   const drakeTile = drake.getTile()
+  if (personCount === max && Map.isInHouse(drake.sprite.x, drake.sprite.y)) {
+    showWinMessage()
+  }
   persons.forEach(person => {
     person.update()
-    if (person.isOnTile(drakeTile)) {
+    if (person.active && person.isOnTile(drakeTile)) {
       person.remove()
       personCount++
     }
@@ -62,4 +66,8 @@ function initPersons() {
     }
     persons.push(personTemp)
   }
+}
+
+function showWinMessage() {
+  winModal.style.display = 'block'
 }
