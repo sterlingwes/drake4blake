@@ -2,13 +2,13 @@
 const tileSpec = require('../assets/level.json')
 const roadTexturePath = require('../assets/road.png')
 const degrassiDrake = require('../assets/degrassidrake.png')
+const house = require('../assets/house.png')
 
 const constants = require('./constants')
 const { streets, tileSize, fontPadding, fontSize } = constants.map
 
 class Map {
-  constructor () {
-  }
+  constructor () {}
 
   init () {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
@@ -18,15 +18,11 @@ class Map {
     game.load.tilemap('roads', null, tileSpec, Phaser.Tilemap.TILED_JSON)
     game.load.image('tiles', roadTexturePath)
     game.load.image('degrassi', degrassiDrake)
+    game.load.image('house', house)
   }
 
   create () {
     game.stage.backgroundColor = 0x2E2E2E
-
-    const degrassiCoords = this.getPixelCoord(8, 16).concat('degrassi')
-    this.degrassi = game.add.sprite.apply(game.add, degrassiCoords)
-    this.degrassi.scale.setTo(0.6)
-    this.degrassi.x += 5
 
     this.map = game.add.tilemap('roads')
     this.map.addTilesetImage('Road', 'tiles')
@@ -38,6 +34,16 @@ class Map {
 
     this.tiles = []
     this.generateTilesArray()
+
+    const degrassiCoords = this.getPixelCoord(7, 16).concat('degrassi')
+    this.degrassi = game.add.sprite.apply(game.add, degrassiCoords)
+    this.degrassi.scale.setTo(0.6)
+    this.degrassi.x += 5
+
+    const houseCoords = this.getPixelCoord(13, 7).concat('house')
+    this.house = game.add.sprite.apply(game.add, houseCoords)
+    this.house.scale.setTo(0.6)
+    this.house.y += 5
   }
 
   renderStreetNames () {
@@ -46,7 +52,7 @@ class Map {
       const coords = this.getFontPixelCoord.apply(this, location)
       const textOptions = [
         street.text,
-        { font: `${fontSize}px Arial`, fill: '#FFF' }
+        { font: `${street.fontSize || fontSize}px Arial`, fill: '#FFF' }
       ]
       const text = game.add.text.apply(game.add, coords.concat(textOptions))
       if (vertical) text.angle = -270
