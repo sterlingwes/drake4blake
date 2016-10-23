@@ -2,8 +2,9 @@ module.exports = {
   drake: {
     speed: 6,
     frameRate: 5,
-    width: 125,
-    height: 150
+    width: 100,
+    height: 120,
+    scale: 1
   },
   map: {
     tileSize: 32,

@@ -1,36 +1,36 @@
 {"frames": {
 
-"DrakeBling1@2x.png":
+"DrakeBling1.png":
 {
-	"frame": {"x":1,"y":285,"w":237,"h":278},
+	"frame": {"x":103,"y":1,"w":97,"h":114},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":237,"h":278},
-	"sourceSize": {"w":237,"h":278}
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":5,"w":97,"h":114},
+	"sourceSize": {"w":100,"h":120}
 },
-"DrakeBling2@2x.png":
+"DrakeBling2.png":
 {
-	"frame": {"x":1,"y":565,"w":130,"h":273},
+	"frame": {"x":202,"y":1,"w":55,"h":112},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":273},
-	"sourceSize": {"w":130,"h":273}
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":8,"w":55,"h":112},
+	"sourceSize": {"w":100,"h":120}
 },
-"DrakeBling3@2x.png":
+"DrakeBling3.png":
 {
-	"frame": {"x":1,"y":1,"w":247,"h":282},
+	"frame": {"x":1,"y":1,"w":100,"h":116},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":282},
-	"sourceSize": {"w":247,"h":282}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":100,"h":116},
+	"sourceSize": {"w":100,"h":120}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "drakebling.png",
 	"format": "RGBA8888",
-	"size": {"w":249,"h":839},
+	"size": {"w":258,"h":118},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:91ba31b50ede6bddc6c720e826915229:ae9dc4057a1f233cd4f20a7e37e64a9f:9a883ee711a7280572ede13a4d403fa8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:aab153c929c52962a69f4ead19bda0ae:67417e1882a87c61394eb4e8a2d0341c:9a883ee711a7280572ede13a4d403fa8$"
 }
 }

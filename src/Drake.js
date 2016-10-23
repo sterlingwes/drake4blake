@@ -6,7 +6,7 @@ const drakeTextureSpec = require('../assets/drakebling.json')
 const Map = require('./Map')
 
 const constants = require('./constants')
-const { speed, frameRate, width, height } = constants.drake
+const { speed, frameRate, width, height, scale } = constants.drake
 const { tileSize, borderAllowance } = constants.map
 
 class Drake {
@@ -19,7 +19,7 @@ class Drake {
     this.sprite = game.add.sprite(width, height, 'drake')
     this.sprite.x = game.width / 2
     this.sprite.y = game.height / 2
-    this.sprite.scale.setTo(0.5)
+    this.sprite.scale.setTo(scale)
     this.sprite.anchor.setTo(0.5, 1)
     this.sprite.animations.add('run')
   }
