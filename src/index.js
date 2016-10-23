@@ -7,12 +7,14 @@ if (ENV === 'debug') {
   require('./grid')
 }
 
+const Helper = require('./Helper')
 const Drake = require('./Drake')
 const Person = require('./Person')
 const Map = require('./Map')
 const SoundManager = require('./SoundManager')
 const constants = require('./constants')
 const { max } = constants.person
+const { tweets, shortUrl } = constants
 
 let drake
 let persons
@@ -30,6 +32,7 @@ function preload () {
   persons = []
   SoundManager.init()
   document.getElementById('winModal').style.display = 'none'
+  document.getElementById('tweet').href = `https://twitter.com/intent/tweet?text=${randomTweet()}`
 }
 
 function create () {
@@ -70,4 +73,9 @@ function initPersons() {
 
 function showWinMessage() {
   document.getElementById('winModal').style.display = 'block'
+}
+
+function randomTweet() {
+  tweets.forEach(tweet => console.log(tweet))
+  return `${tweets[Helper.getRandomIntInclusive(0, tweets.length - 1)]} ${shortUrl}`
 }

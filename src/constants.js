@@ -34,5 +34,12 @@ module.exports = {
       { text: 'COXWELL AVE', location: [26, 6], vertical: true },
       { text: 'WOODBINE AVE', location: [29, 10], vertical: true }
     ]
-  }
+  },
+  tweets: [
+    'Help @Drake support Blake Boultbee Youth Outreach Services',
+    '@Drake - how many people can you get to Blake Boultbee Youth Outreach',
+    '@Drake for Blake: a fun game supporting Toronto’s Blake Boultbee Youth Outreach Services',
+    'Learn more about \#Toronto’s Blake Boultbee Youth Outreach Service? Start with this fun game: @Drake for Blake'
+  ],
+  shortUrl: 'http://bit.ly/2eA57nU'
 }
