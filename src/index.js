@@ -28,6 +28,11 @@ var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
 })
 
 function preload () {
+  const personPath = require('../assets/person.png')
+  const moneyPath = require('../assets/money.png')
+  game.load.image('person', personPath)
+  game.load.image('money', moneyPath)
+
   Map.init()
   drake = new Drake()
   persons = []

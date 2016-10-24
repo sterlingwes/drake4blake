@@ -4,7 +4,8 @@ const shuffle = require('lodash/shuffle')
 const without = require('lodash/without')
 const constants = require('./constants')
 const { debug } = require('./Helper')
-const { speed } = constants.person
+const { speed, size } = constants.person
+const { tileSize } = constants.map
 
 const directions = ['up', 'down', 'left', 'right']
 const opposite = {
@@ -20,16 +21,14 @@ class Person {
   }
 
   create () {
-    this.graphics = game.add.graphics(0, 0)
-    this.graphics.beginFill(0xff0000)
-    this.graphics.drawRect(0, 0, 32, 32)
-    this.graphics.endFill()
+    this.sprite = game.add.sprite(size, size, 'person')
+    this.sprite.scale.setTo(0.5)
     this.setPosition()
   }
 
   move (x, y) {
-    this.graphics.x += x || 0
-    this.graphics.y += y || 0
+    this.sprite.x += x || 0
+    this.sprite.y += y || 0
   }
 
   /*
@@ -42,7 +41,7 @@ class Person {
     if (!this.active) return
     
     debug('-- update')
-    debug(`current: ${this.tile.x},${this.tile.y} (${this.graphics.x},${this.graphics.y})`)
+    debug(`current: ${this.tile.x},${this.tile.y} (${this.sprite.x},${this.sprite.y})`)
     this.getDirection()
     if (this.direction) {
       this.move()
@@ -99,28 +98,28 @@ class Person {
   setPosition (tile) {
     this.tile = tile || Map.getRandomTile()
     this.tileId = `${this.tile.x}-${this.tile.y}`
-    this.graphics.x = this.tile.worldX
-    this.graphics.y = this.tile.worldY
+    this.sprite.x = this.tile.worldX
+    this.sprite.y = this.tile.worldY
   }
 
   move () {
     switch (this.direction) {
       case 'up':
-        this.graphics.y -= speed; break
+        this.sprite.y -= speed; break
       case 'down':
-        this.graphics.y += speed; break
+        this.sprite.y += speed; break
       case 'left':
-        this.graphics.x -= speed; break
+        this.sprite.x -= speed; break
       case 'right':
-        this.graphics.x += speed;
+        this.sprite.x += speed;
     }
-    this.tile = Map.getTileFromPixels(this.graphics.x, this.graphics.y)
-    debug(`moved: ${this.tile.x},${this.tile.y} (${this.graphics.x},${this.graphics.y})`)
+    this.tile = Map.getTileFromPixels(this.sprite.x, this.sprite.y)
+    debug(`moved: ${this.tile.x},${this.tile.y} (${this.sprite.x},${this.sprite.y})`)
   }
 
   remove () {
     this.active = false
-    this.graphics.destroy()
+    this.sprite.destroy()
   }
 
   isOnTile (tile) {
@@ -130,7 +129,7 @@ class Person {
   comparePosition (other) {
     let result = false
     if (other) {
-      result = this.graphics.x == other.graphics.x && this.graphics.y == other.graphics.y
+      result = this.sprite.x == other.graphics.x && this.sprite.y == other.graphics.y
     }
     return result
   }
