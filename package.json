@@ -6,7 +6,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"NODE_ENV=development ./node_modules/.bin/webpack --watch\" \"cd dist && python -m SimpleHTTPServer\"",
     "debug": "concurrently --kill-others \"NODE_ENV=debug ./node_modules/.bin/webpack --watch\" \"cd dist && python -m SimpleHTTPServer\"",
-    "build": "./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/webpack",
+    "test": "mocha --require babel-register tests/setup.js tests/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -15,13 +16,18 @@
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.18.0",
     "clean-webpack-plugin": "^0.1.13",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
+    "expect.js": "^0.3.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.0",
     "json-loader": "^0.5.4",
+    "mocha": "^3.1.2",
+    "mock-require": "^2.0.0",
+    "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2"

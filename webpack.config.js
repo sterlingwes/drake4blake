@@ -63,7 +63,8 @@ const webpackConfig = {
       template: path.join(paths.src, 'index.html')
     }),
     new webpack.DefinePlugin({
-      'ENV': '"' + env + '"'
+      'ENV': '"' + env + '"',
+      'DEV_MODE': dev
     }),
     new CopyWebpackPlugin([
       {
