@@ -62,6 +62,7 @@ class Person {
     while (!direction && options.length) {
       const testDirection = options.shift()
       if (this.checkDirection(testDirection)) {
+        this.lastDirection = this.direction
         direction = testDirection
       }
     }
@@ -102,6 +103,16 @@ class Person {
     this.sprite.y = this.tile.worldY
   }
 
+  adjustCourse (val, axis) {
+    let remainder
+    if (val >= tileSize) remainder = val % tileSize
+    else remainder = tileSize % val
+    if (!remainder) return val
+    let offset = remainder
+    if ((val + remainder) % 32 === 0) return val + remainder
+    return tileSize - remainder + val
+  }
+
   move () {
     switch (this.direction) {
       case 'up':
@@ -113,6 +124,13 @@ class Person {
       case 'right':
         this.sprite.x += speed;
     }
+
+    if (this.lastDirection && this.lastDirection !== this.direction) {
+      console.log(this.sprite.x, this.sprite.y)
+      this.sprite.x = this.adjustCourse(this.sprite.x, 'x')
+      this.sprite.y = this.adjustCourse(this.sprite.y, 'y')
+    }
+
     this.tile = Map.getTileFromPixels(this.sprite.x, this.sprite.y)
     debug(`moved: ${this.tile.x},${this.tile.y} (${this.sprite.x},${this.sprite.y})`)
   }

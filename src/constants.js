@@ -7,7 +7,7 @@ module.exports = {
     scale: 1
   },
   person: {
-    speed: 32,
+    speed: 6,
     max: 1,
     size: 32
   },
