@@ -1,5 +1,6 @@
 /* globals ENV */
 
+require('./vendor/analytics')
 require('./style.css')
 require('./window.js')
 require('./twitter.js')
