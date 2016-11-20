@@ -8,7 +8,7 @@ module.exports = {
   },
   person: {
     speed: 32,
-    max: 8,
+    max: 12,
     size: 32,
     debounceMilli: 100
   },

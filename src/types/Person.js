@@ -3,8 +3,8 @@ const Map = require('./Map')
 const shuffle = require('lodash/shuffle')
 const without = require('lodash/without')
 const debounce = require('lodash/debounce')
-const constants = require('./constants')
-const { debug } = require('./Helper')
+const constants = require('../constants')
+const { debug } = require('../utils/helper')
 const { speed, size, debounceMilli } = constants.person
 const { tileSize } = constants.map
 

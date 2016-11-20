@@ -5,15 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Drake for Blake</title>
+    <style type="text/css">
+      html, body {
+        background-color: #2E2E2E;
+        color: #CCC;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #container, #sidebar {
+        opacity: 1;
+        transition: opacity, 1s;
+      }
+
+      #container.invisible,
+      #sidebar.invisible,
+      #startModal {
+        opacity: 0
+      }
+
+      #loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 1.5em;
+        font-size: 1.2em;
+        transition: letter-spacing, 10s;
+      }
+
+      #loading.animate {
+        letter-spacing: 0.2em;
+      }
+    </style>
     <script src="vendor/static/phaser.js"></script>
   </head>
   <body>
     <div id="gridTop"></div>
-    <div id="container">
+    <div id="container" class="invisible">
       <div id="gridLeft"></div>
       <div id="app"></div>
     </div>
-    <div id="sidebar">
+    <div id="sidebar" class="invisible">
       <h1>
         <span class="drakefont">Drake for</span>
         <span class="hidden">Blake</span>
@@ -36,7 +76,7 @@
         <p>
           BBYOS provides counselling and support services to at risk youth and families. Located between Pape and Jones, and primarily serving youth ages 12 to 25, BBYOS works to provide both short term emergency assistance while also developing long term trust-focused relationships. Once you’re a client of BBYOS, you’re always a client.
         </p>
-        <p>
+        <p class="highlight">
           Use your arrow keys to help Drake guide folks to the Blake Boultbee Youth Outreach Service. Earn points for getting more people to the center faster, and share your score to bring attention to this great service in Toronto.
         </p>
       </div>
@@ -48,9 +88,9 @@
       </div>
     </div>
 
-    <div id="winModal">
+    <div id="winModal" class="modal hidden">
       <div class="overlay"></div>
-      <div class="modal">
+      <div class="dialog">
         <p>Thank you for playing. Don't forget to <a href="http://bbyos.org">visit our website</a>!</p>
         <p>
           <a href="https://twitter.com/share?text=.@Drake - how many people can you get to Blake Boultbee Youth Outreach&hashtag=toronto" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
@@ -59,5 +99,23 @@
         </p>
       </div>
     </div>
+
+    <div id="startModal" class="modal">
+      <div class="overlay"></div>
+      <div class="dialog">
+        <p>Use your arrow keys to help Drake guide people to BBYOS!</p>
+        <p>
+          <div class="button startBtn" id="start">Start</div>
+        </p>
+      </div>
+    </div>
+
+    <div id="loading">
+      <div>Loading</div>
+    </div>
+
+    <script>
+      document.getElementById('loading').className += ' animate'
+    </script>
   </body>
 </html>

@@ -1,8 +1,8 @@
 /* globals game */
-const Helper = require('./Helper')
+const Helper = require('../utils/helper')
 
-const musicDrake = require('../assets/music-drake.mp3')
-const musicSynth = require('../assets/music-synth.mp3')
+const musicDrake = require('../../assets/music-drake.mp3')
+const musicSynth = require('../../assets/music-synth.mp3')
 
 class SoundManager {
   constructor () {

@@ -1,5 +1,5 @@
-const Helper = require('./Helper')
-const { tweets } = require('./constants')
+const Helper = require('./helper')
+const { tweets } = require('../constants')
 
 function generateTweets() {
   const tweetText = encodeURI(`${tweets[Helper.getRandomIntInclusive(0, tweets.length - 1)]}`)

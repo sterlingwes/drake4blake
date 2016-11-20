@@ -36,6 +36,7 @@ a {
 
 #sidebar div p {
   padding-right: 20px;
+  text-shadow: #000 0px 2px 5px;
 }
 
 .guide {
@@ -55,10 +56,6 @@ a {
   color: #fff;
   display: block;
   margin-left: 80px;
-}
-
-.hidden {
-  display: none;
 }
 
 #gridTop, #gridLeft {
@@ -84,7 +81,7 @@ a {
   vertical-align: top
 }
 
-#winModal {
+.modal {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -93,7 +90,7 @@ a {
   display: none;
 }
 
-#winModal .overlay {
+.modal .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -102,7 +99,7 @@ a {
   background-color: rgba(0,0,0,0.7);
 }
 
-#winModal .modal {
+.modal .dialog {
   width: 500px;
   height: 90px;
   background-color: #222;
@@ -126,13 +123,14 @@ a {
   padding: 7px 8px;
   border-radius: 4px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button--small {
   padding: 3px 7px 2px 7px;
 }
 
-.donateBtn {
+.donateBtn, .startBtn {
   background-color: #a03894;
   color: #fff;
 }

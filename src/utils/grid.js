@@ -2,7 +2,7 @@ const container = document.getElementById('container')
 const top = document.getElementById('gridTop')
 const left = document.getElementById('gridLeft')
 
-const { width, height } = require('./constants').map
+const { width, height } = require('../constants').map
 
 container.className += 'debug'
 top.className += 'debug'

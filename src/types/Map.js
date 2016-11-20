@@ -1,11 +1,11 @@
 /* globals game */
-const tileSpec = require('../assets/level.json')
-const roadTexturePath = require('../assets/road.png')
-const Helper = require('./Helper')
-const degrassiDrake = require('../assets/degrassidrake.png')
-const house = require('../assets/house.png')
+const tileSpec = require('../../assets/level.json')
+const roadTexturePath = require('../../assets/road.png')
+const Helper = require('../utils/helper')
+const degrassiDrake = require('../../assets/degrassidrake.png')
+const house = require('../../assets/house.png')
 
-const constants = require('./constants')
+const constants = require('../constants')
 const { streets, tileSize, fontPadding, fontSize } = constants.map
 
 class Map {

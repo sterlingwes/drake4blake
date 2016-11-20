@@ -2,18 +2,17 @@
 
 require('./vendor/analytics')
 require('./style.css')
-require('./window.js')
-require('./twitter.js')
+
+const windowManager = require('./utils/window.js')
+require('./utils/twitter.js')
 
 if (ENV === 'debug') {
   require('./grid')
 }
 
-const Helper = require('./Helper')
-const Drake = require('./Drake')
-const Person = require('./Person')
-const Map = require('./Map')
-const SoundManager = require('./SoundManager')
+const { Drake, Map, Person, SoundManager } = require('./types')
+
+const Helper = require('./utils/helper')
 const constants = require('./constants')
 const { max } = constants.person
 const winModal = document.getElementById('winModal')
@@ -37,19 +36,25 @@ function preload () {
   Map.init()
   drake = new Drake()
   persons = []
-  SoundManager.init()
+  // SoundManager.init()
 }
 
 function create () {
+  windowManager.fadeIn()
   Map.create()
+  game.paused = true
+  // if (ENV !== 'debug') SoundManager.create()
+}
+
+function start () {
   initPersons()
   drake.create()
-  if (ENV !== 'debug') SoundManager.create()
+  game.paused = false
 }
 
 function update () {
   Map.update()
-  SoundManager.update()
+  // SoundManager.update()
   drake.update()
   const drakeTile = drake.getTile()
   if (personCount === max && Map.isInHouse(drake.sprite.x, drake.sprite.y)) {
@@ -57,7 +62,7 @@ function update () {
   }
   persons.forEach(person => {
     person.update()
-    if (person.active && person.isOnTile(drakeTile)) {
+    if (drake.isMoving() && person.active && person.isOnTile(drakeTile)) {
       person.remove()
       personCount++
     }
@@ -76,6 +81,9 @@ function initPersons() {
   }
 }
 
-function showWinMessage() {
+function showWinMessage () {
   document.getElementById('winModal').style.display = 'block'
 }
+
+// show starting modal
+require('./views/startModal')(start)

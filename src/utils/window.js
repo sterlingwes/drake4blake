@@ -13,3 +13,12 @@ toggleSidebar()
 window.onresize = function () {
   toggleSidebar()
 }
+
+module.exports = {
+  fadeIn () {
+    ['container', 'sidebar'].forEach(div => {
+      document.getElementById(div).className = ''
+    })
+    document.getElementById('loading').style.display = 'none'
+  }
+}

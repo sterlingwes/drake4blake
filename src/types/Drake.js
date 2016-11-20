@@ -1,11 +1,11 @@
 /* globals game */
 
-const drakeTexturePath = require('../assets/drakebling.png')
-const drakeTextureSpec = require('../assets/drakebling.json')
+const drakeTexturePath = require('../../assets/drakebling.png')
+const drakeTextureSpec = require('../../assets/drakebling.json')
 
 const Map = require('./Map')
 
-const constants = require('./constants')
+const constants = require('../constants')
 const { speed, frameRate, width, height, scale } = constants.drake
 const { tileSize, borderAllowance } = constants.map
 
@@ -17,8 +17,8 @@ class Drake {
 
   create () {
     this.sprite = game.add.sprite(width, height, 'drake')
-    this.sprite.x = game.width / 2
-    this.sprite.y = game.height / 2
+    this.sprite.x = 580
+    this.sprite.y = 390
     this.sprite.scale.setTo(scale)
     this.sprite.anchor.setTo(0.5, 1)
     this.sprite.animations.add('run')
@@ -28,6 +28,8 @@ class Drake {
     if (!this.animation) {
       this.animation = this.sprite.animations.play('run', frameRate, true)
     }
+
+    this.moving = true
 
     if (!this.inBounds(x, y)) return this.animation.paused = true
 
@@ -57,6 +59,10 @@ class Drake {
     return Map.isRoad.apply(Map, coords)
   }
 
+  isMoving () {
+    return this.moving
+  }
+
   update () {
     if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
       this.move(-speed)
@@ -68,6 +74,7 @@ class Drake {
       this.move(0, speed)
     } else {
       if (this.animation) this.animation.paused = true
+      this.moving = false
     }
   }
 
