@@ -1,4 +1,7 @@
 module.exports = {
+  stats: {
+    topOffsetPx: 30
+  },
   drake: {
     speed: 6,
     frameRate: 5,
@@ -8,7 +11,7 @@ module.exports = {
   },
   person: {
     speed: 32,
-    max: 12,
+    max: 10,
     size: 32,
     debounceMilli: 100
   },
@@ -38,8 +41,8 @@ module.exports = {
     ]
   },
   tweets: [
-    'Help @Drake support Blake Boultbee Youth Outreach Services',
-    '@Drake - how many people can you get to Blake Boultbee Youth Outreach',
-    '@Drake for Blake: a fun game supporting Toronto’s Blake Boultbee Youth Outreach Services'
+    'Help @Drake get people to Blake Boultbee Youth Outreach Services',
+    '.@Drake for Blake: how many people can you get to Blake Boultbee Youth Outreach Services',
+    '.@Drake for Blake: a fun game supporting Toronto’s Blake Boultbee Youth Outreach Services'
   ]
 }

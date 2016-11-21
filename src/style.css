@@ -112,6 +112,14 @@ a {
   left: 30vw;
 }
 
+#winModal .dialog {
+  height: 125px;
+}
+
+#winModal .dialog b {
+  color: #ff55eb;
+}
+
 .buttons {
   margin-top: 30px;
 }

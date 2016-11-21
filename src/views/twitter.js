@@ -1,4 +1,4 @@
-const Helper = require('./helper')
+const Helper = require('../utils/helper')
 const { tweets } = require('../constants')
 
 function generateTweets() {

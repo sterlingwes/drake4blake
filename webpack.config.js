@@ -29,15 +29,8 @@ const webpackConfig = {
         loaders: ['babel']
       },
       {
-        test: /\.(png|gif|jpe?g|svg)$/i,
-        loader: 'url',
-        query: {
-          limit: 10000
-        }
-      },
-      {
-        test: /\.mp3$/,
-        loader: 'url'
+        test: /\.(png|gif|jpe?g|svg|mp3|m4a)$/i,
+        loader: 'file'
       },
       {
         test: /\.css$/,

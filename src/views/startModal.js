@@ -1,4 +1,4 @@
-const fadeSeconds = 1
+const fadeSeconds = 0.5
 const fadeMilli = fadeSeconds * 1000
 const startModal = document.getElementById('startModal')
 
