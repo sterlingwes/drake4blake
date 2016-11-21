@@ -11,15 +11,13 @@ if (ENV === 'debug') {
 }
 
 const { Drake, Map, Person, SoundManager, Stats } = require('./types')
-const Helper = require('./utils/helper')
 const constants = require('./constants')
 const { max } = constants.person
-const winModal = document.getElementById('winModal')
 
 let drake
 let persons
 
-var game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
+const game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
   preload: preload,
   create: create,
   update: update
@@ -50,7 +48,7 @@ function create () {
   windowManager.fadeIn()
   Map.create()
   game.paused = true
-  if (ENV !== 'debug') SoundManager.create()
+  SoundManager.create()
 }
 
 function start () {
@@ -83,7 +81,6 @@ function update () {
 }
 
 function initPersons() {
-  const tiles = Map.tiles
   for (let i = 0; i < max; i++) {
     const personTemp = new Person()
     personTemp.create()

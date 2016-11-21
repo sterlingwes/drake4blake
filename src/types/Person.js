@@ -6,7 +6,6 @@ const debounce = require('lodash/debounce')
 const constants = require('../constants')
 const { debug } = require('../utils/helper')
 const { speed, size, debounceMilli } = constants.person
-const { tileSize } = constants.map
 
 const directions = ['up', 'down', 'left', 'right']
 const opposite = {

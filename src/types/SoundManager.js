@@ -1,5 +1,4 @@
 /* globals game */
-const Helper = require('../utils/helper')
 const shuffle = require('lodash/shuffle')
 
 const musicDrake = require('../../assets/music-drake-loop.mp3')

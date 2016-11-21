@@ -26,7 +26,10 @@ const webpackConfig = {
       {
         test: /\.js$/,
         include: paths.src,
-        loaders: ['babel']
+        loader: 'babel',
+        query: {
+          presets: ['es2015']
+        }
       },
       {
         test: /\.(png|gif|jpe?g|svg|mp3|m4a)$/i,
@@ -76,7 +79,8 @@ if (!dev) {
   webpackConfig.plugins = webpackConfig.plugins.concat([
     new CleanPlugin(paths.dist),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   ])
 }
 
