@@ -48,6 +48,19 @@
     <script src="vendor/static/phaser.js"></script>
   </head>
   <body>
+    <div id="mobileArrows" style="display:none">
+      <svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="gamepad" fill="#A03894">
+                  <path d="M130,57.8372354 L89.4949902,1 L50,56.4199608 C60.6719105,50.52015 74.1412033,47 88.782341,47 C104.560677,47 118.978061,51.0882169 130,57.8372354 Z" id="gamepad-up"></path>
+                  <path d="M68,118.837235 L27.4949902,62 L-12,117.419961 C-1.32808954,111.52015 12.1412033,108 26.782341,108 C42.5606771,108 56.978061,112.088217 68,118.837235 Z" id="gamepad-left" transform="translate(28.000000, 90.418618) rotate(-90.000000) translate(-28.000000, -90.418618) "></path>
+                  <path d="M192,118.837235 L151.49499,62 L112,117.419961 C122.67191,111.52015 136.141203,108 150.782341,108 C166.560677,108 180.978061,112.088217 192,118.837235 Z" id="gamepad-right" transform="translate(152.000000, 90.418618) rotate(90.000000) translate(-152.000000, -90.418618) "></path>
+                  <path d="M50,124.417275 L89.4949902,179.837235 L130,123 C118.978061,129.749019 104.560677,133.837235 88.782341,133.837235 C74.1412033,133.837235 60.6719105,130.317085 50,124.417275 Z" id="gamepad-down"></path>
+              </g>
+          </g>
+      </svg>
+    </div>
+
     <div id="gridTop"></div>
     <div id="container" class="invisible">
       <div id="gridLeft"></div>
@@ -104,7 +117,8 @@
     <div id="startModal" class="modal">
       <div class="overlay"></div>
       <div class="dialog">
-        <p>Use your arrow keys to help Drake guide people to BBYOS!</p>
+        <p class="desktopOnly">Use your arrow keys to help Drake guide people to BBYOS!</p>
+        <p class="mobileOnly">Use the arrows to help Drake guide people to BBYOS!</p>
         <p>
           <div class="button startBtn" id="start">Start</div>
         </p>
@@ -114,6 +128,8 @@
     <div id="loading">
       <div>Loading</div>
     </div>
+
+    <div id="mobileNotice"></div>
 
     <script>
       document.getElementById('loading').className += ' animate'

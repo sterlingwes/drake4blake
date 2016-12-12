@@ -15,9 +15,9 @@ window.onresize = function () {
 }
 
 module.exports = {
-  fadeIn () {
+  fadeIn (hasTouch) {
     ['container', 'sidebar'].forEach(div => {
-      document.getElementById(div).className = ''
+      document.getElementById(div).className = hasTouch ? 'mobile' : ''
     })
     document.getElementById('loading').style.display = 'none'
   }

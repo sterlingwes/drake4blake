@@ -15,6 +15,10 @@ a {
   max-width: 100vw;
 }
 
+#container {
+  height: 100vh
+}
+
 #container.debug #app {
   display: inline-block;
 }
@@ -154,4 +158,75 @@ a {
 
 .basicBtn:hover {
   background-color: #fff
+}
+
+#container.mobile canvas {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+#container.mobile #app {
+  width: auto;
+  height: 100vh;
+  display: inline-block
+}
+
+svg {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.mobileControls {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom:50px
+}
+
+.mobileControls svg {
+  width: 200px;
+  height: auto
+}
+
+#gamepad-up:hover,
+#gamepad-down:hover,
+#gamepad-left:hover,
+#gamepad-right:hover {
+  fill: #e46cd6 !important
+}
+
+.desktopOnly { display: block }
+.mobileOnly { display: none }
+
+#mobileNotice { display: none }
+
+@media only screen
+and (max-device-width : 600px) {
+  .modal .dialog {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .desktopOnly { display: none }
+  .mobileOnly { display: block }
+}
+
+@media only screen  
+and (max-device-width : 500px) 
+and (orientation : portrait) {
+  #mobileNotice {
+    display: block;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #2E2E2E;
+    background-repeat: no-repeat;
+    background-image: url('../assets/rotate-device.png');
+    background-position: center center;
+    text-align: center;
+  }
 }

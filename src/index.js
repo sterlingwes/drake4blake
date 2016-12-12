@@ -27,25 +27,31 @@ function preload () {
   const personPath = require('../assets/person.png')
   const moneyPath = require('../assets/money.png')
   const timerIcon = require('../assets/timer.png')
-
-  game.load.onLoadComplete.add(function () {
-    // show starting modal
-    require('./views/startModal')(start)
-  })
   
   game.load.image('person', personPath)
   game.load.image('money', moneyPath)
   game.load.image('timer', timerIcon)
 
-
   Map.init()
   drake = new Drake()
+  drake.setTouch(game.device.touch)
   persons = []
   SoundManager.init()
+
+  game.load.onLoadComplete.add(function () {
+    // show starting modal
+    require('./views/startModal')(start)
+
+    if (game.device.touch) {
+      require('./views/mobileControls')(dir => {
+        drake.setDirection(dir || '')
+      })
+    }
+  })
 }
 
 function create () {
-  windowManager.fadeIn()
+  windowManager.fadeIn(game.device.touch)
   Map.create()
   game.paused = true
   SoundManager.create()
@@ -56,6 +62,7 @@ function start () {
   Stats.create()
   drake.create()
   game.paused = false
+  if (game.device.touch) SoundManager.start()
 }
 
 function update () {

@@ -24,12 +24,18 @@ class Drake {
     this.sprite.animations.add('run')
   }
 
+  setTouch (hasTouch) {
+    this.hasTouch = hasTouch
+  }
+
+  setDirection (direction) {
+    this.moving = direction
+  }
+
   move (x, y) {
     if (!this.animation) {
       this.animation = this.sprite.animations.play('run', frameRate, true)
     }
-
-    this.moving = true
 
     if (!this.inBounds(x, y)) return this.animation.paused = true
 
@@ -63,18 +69,42 @@ class Drake {
     return this.moving
   }
 
+  goingLeft () {
+    if (!this.hasTouch) return game.input.keyboard.isDown(Phaser.Keyboard.LEFT)
+    return this.moving === 'left'
+  }
+
+  goingRight () {
+    if (!this.hasTouch) return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)
+    return this.moving === 'right'
+  }
+
+  goingUp () {
+    if (!this.hasTouch) return game.input.keyboard.isDown(Phaser.Keyboard.UP)
+    return this.moving === 'up'
+  }
+
+  goingDown () {
+    if (!this.hasTouch) return game.input.keyboard.isDown(Phaser.Keyboard.DOWN)
+    return this.moving === 'down'
+  }
+
   update () {
-    if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+    if (this.goingLeft()) {
       this.move(-speed)
-    } else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+      this.moving = 'left'
+    } else if (this.goingRight()) {
       this.move(speed)
-    } else if (game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+      this.moving = 'right'
+    } else if (this.goingUp()) {
       this.move(0, -speed)
-    } else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
+      this.moving = 'up'
+    } else if (this.goingDown()) {
       this.move(0, speed)
+      this.moving = 'down'
     } else {
       if (this.animation) this.animation.paused = true
-      this.moving = false
+      this.moving = ''
     }
   }
 
