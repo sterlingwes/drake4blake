@@ -41,7 +41,10 @@ class SoundManager {
     this.drake.yeahyuh = game.add.audio('voiceYeahYuh', vocalVolume)
 
     // add mute toggle
-    this.volumeIcon = game.add.image(game.width - 150, topOffsetPx - 2, 'volumeOn')
+    const isMobile = window.game.device.touch
+    const mobileXOffset = isMobile ? -250 : 0
+    const mobileYOffset = isMobile ? 150 : 0
+    this.volumeIcon = game.add.image(game.width - 150 + mobileXOffset, topOffsetPx - 2 + mobileYOffset, 'volumeOn')
     this.volumeIcon.scale.setTo(0.8)
     this.volumeIcon.inputEnabled = true
     this.volumeIcon.events.onInputDown.add(this.toggleMute, this)

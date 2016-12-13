@@ -18,7 +18,7 @@ class Drake {
   create () {
     this.sprite = game.add.sprite(width, height, 'drake')
     this.sprite.x = 580
-    this.sprite.y = 390
+    this.sprite.y = this.hasTouch ? 280 : 390
     this.sprite.scale.setTo(scale)
     this.sprite.anchor.setTo(0.5, 1)
     this.sprite.animations.add('run')

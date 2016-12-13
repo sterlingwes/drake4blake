@@ -1,12 +1,11 @@
 /* globals game */
-const tileSpec = require('../../assets/level.json')
 const roadTexturePath = require('../../assets/road.png')
 const Helper = require('../utils/helper')
 const degrassiDrake = require('../../assets/degrassidrake.png')
 const house = require('../../assets/house.png')
 
 const constants = require('../constants')
-const { streets, tileSize, fontPadding, fontSize } = constants.map
+const { tileSize, fontPadding, fontSize } = constants.map
 
 class Map {
   constructor () {}
@@ -16,6 +15,8 @@ class Map {
     game.scale.pageAlignHorizontally = true
     game.scale.pageAlignVertically = true
 
+    const isMobile = window.game.device.touch ? '-mobile' : ''
+    const tileSpec = require(`../../assets/level${isMobile}.json`)
     game.load.tilemap('roads', null, tileSpec, Phaser.Tilemap.TILED_JSON)
     game.load.image('tiles', roadTexturePath)
     game.load.image('degrassi', degrassiDrake)
@@ -34,12 +35,15 @@ class Map {
     this.tiles = []
     this.generateTilesArray()
 
-    const degrassiCoords = this.getPixelCoord(7, 16).concat('degrassi')
+    const isMobile = window.game.device.touch
+    const degrassiY = isMobile ? 11 : 16
+    const degrassiCoords = this.getPixelCoord(7, degrassiY).concat('degrassi')
     this.degrassi = game.add.sprite.apply(game.add, degrassiCoords)
     this.degrassi.scale.setTo(0.6)
     this.degrassi.x += 5
 
-    const houseCoords = this.getPixelCoord(13, 7).concat('house')
+    const houseY = isMobile ? 5 : 7
+    const houseCoords = this.getPixelCoord(13, houseY).concat('house')
     this.house = game.add.sprite.apply(game.add, houseCoords)
     this.house.scale.setTo(0.6)
     this.house.y += 5
@@ -49,6 +53,7 @@ class Map {
   }
 
   renderStreetNames () {
+    const streets = window.game.device.touch ? constants.mobile.map.streets : constants.map.streets
     streets.forEach(street => {
       const { vertical, location, x, y } = street
       const coords = this.getFontPixelCoord.apply(this, location)

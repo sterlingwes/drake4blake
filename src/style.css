@@ -16,7 +16,8 @@ a {
 }
 
 #container {
-  height: 100vh
+  height: 100vh;
+  position: relative
 }
 
 #container.debug #app {
@@ -160,42 +161,61 @@ a {
   background-color: #fff
 }
 
-#container.mobile canvas {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
 #container.mobile #app {
   width: auto;
   height: 100vh;
-  display: inline-block
 }
 
-svg {
+#mobileControls {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 80px;
+  text-align: center;
+  pointer-events: none
 }
 
-.mobileControls {
-  display: inline-block;
-  vertical-align: bottom;
-  margin-bottom:50px
+#mobileControls div {
+  background-color: #e46cd6;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  pointer-events: auto
 }
 
-.mobileControls svg {
-  width: 200px;
-  height: auto
+#gamepad-left {
+  width: 100px;
+  left: 0; top: 100px; bottom: 100px;
 }
 
+#gamepad-right {
+  width: 100px;
+  right: 0; top: 100px; bottom: 100px;
+}
+
+#gamepad-up {
+  top: 0; left: 0; right: 0;
+  height: 100px;
+}
+
+#gamepad-down {
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+}
+
+/*
 #gamepad-up:hover,
 #gamepad-down:hover,
 #gamepad-left:hover,
 #gamepad-right:hover {
   fill: #e46cd6 !important
-}
+}*/
 
 .desktopOnly { display: block }
 .mobileOnly { display: none }

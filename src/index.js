@@ -17,7 +17,9 @@ const { max } = constants.person
 let drake
 let persons
 
-const game = window.game = new Phaser.Game(960, 800, Phaser.AUTO, 'app', {
+const { widthPx, heightPx } = constants.map
+
+const game = window.game = new Phaser.Game(widthPx, heightPx, Phaser.AUTO, 'app', {
   preload: preload,
   create: create,
   update: update
@@ -38,15 +40,13 @@ function preload () {
   persons = []
   SoundManager.init()
 
+  if (game.device.touch) {
+    game.scale.setGameSize(widthPx, constants.mobile.map.heightPx)
+  }
+
   game.load.onLoadComplete.add(function () {
     // show starting modal
     require('./views/startModal')(start)
-
-    if (game.device.touch) {
-      require('./views/mobileControls')(dir => {
-        drake.setDirection(dir || '')
-      })
-    }
   })
 }
 
@@ -58,6 +58,9 @@ function create () {
 }
 
 function start () {
+  require('./views/mobileControls')(dir => {
+    drake.setDirection(dir || '')
+  })
   initPersons()
   Stats.create()
   drake.create()
